@@ -29,6 +29,7 @@ export default function Experience() {
                 border: "1px solid rgba(0, 0, 0, 0.05)",
                 textAlign: "left",
                 padding: "1.3rem 2rem",
+                visibility: "visible"
               }}
               contentArrowStyle={{
                 borderRight:
@@ -42,6 +43,8 @@ export default function Experience() {
                 background:
                   theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
                 fontSize: "1.5rem",
+                visibility: "visible"
+
               }}
             >
               <h3 className="font-semibold capitalize">{item.title}</h3>
