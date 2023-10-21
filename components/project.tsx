@@ -36,13 +36,13 @@ export default function Project({
       className="group mb-3 sm:mb-8 last:mb-0 relative"
     >
       <div className="flex absolute gap-2 -right-5 -top-3 z-10">
-        <Link href={`${github}`}>
+        <Link href={`${github?github:"/"}`}>
           <FaGithubSquare
             size={35}
             className="hover:rotate-45 transition-transform delay-150 scale-105"
           />
         </Link>
-        <Link href={`${live}`}>
+        <Link href={`${live?live:"/"}`}>
           <BsFillArrowUpRightCircleFill
             size={35}
             className="hover:rotate-45 transition-transform delay-150 scale-105"
