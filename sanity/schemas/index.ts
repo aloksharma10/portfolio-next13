@@ -1,6 +1,6 @@
-import project from './project-schema'
-import page from "./page-schema"
+import { about, experience, profileImage, project, skills } from "./sanity-schemas";
 
-const schemas = [project, page];
+
+const schemas = [project, profileImage, about, experience, skills];
 
 export default schemas;
