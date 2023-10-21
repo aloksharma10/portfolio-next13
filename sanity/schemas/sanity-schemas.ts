@@ -1,4 +1,4 @@
-export const profileImage = {
+export const profile = {
     name: "profile",
     title: "Profile",
     type: "document",
@@ -18,10 +18,16 @@ export const profileImage = {
             ]
         },
         {
-            name: "url",
-            title: "URL",
+            name: "resumeurl",
+            title: "Resume url",
             type: "url"
         },
+        {
+            name: "file",
+            title: "Resume File",
+            type: "file",
+        },
+
     ]
 }
 
@@ -53,6 +59,11 @@ export const experience = {
         {
             name: "title",
             title: "Comapny Name",
+            type: "string",
+        },
+        {
+            name: "location",
+            title: "Comapny location",
             type: "string",
         },
         {
@@ -147,7 +158,7 @@ export const project = {
             name: "skills",
             title: "Skills Tags",
             type: 'array',
-            of: [{type: 'string'}]
+            of: [{ type: 'string' }]
         },
         {
             name: "github",

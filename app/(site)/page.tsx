@@ -10,7 +10,7 @@ import {
   getSkills,
   getExperience,
   aboutMe,
-  profilePhoto,
+  profile,
 } from "@/sanity/sanity-utils";
 import { AboutType } from "@/types/About";
 import { ExperienceType } from "@/types/Experience";
@@ -20,10 +20,10 @@ import { Project } from "@/types/Project";
 import { SkillType } from "@/types/Skills";
 
 export default async function Home() {
-  const [projects, skills, experience, about, profileImg]: [
+  const [projects, skills, experience, about, profileData]: [
     Project[],
     SkillType[],
-    ExperienceType,
+    ExperienceType[],
     AboutType,
     ProfileType
   ] = await Promise.all([
@@ -31,17 +31,15 @@ export default async function Home() {
     getSkills(),
     getExperience(),
     aboutMe(),
-    profilePhoto(),
+    profile(),
   ]);
-  console.log(about);
   return (
-    <main className="flex flex-col items-center px-4">
-      <Intro image={profileImg.image} summary={about.summary} />
+    <main className="flex flex-col items-center px-4" >
+      <Intro profile={profileData} summary={about.summary}  />
       <SectionDivider />
-      <About />
-      <Projects />
-      <Skills />
-      <Experience />
+      <Experience experiences={experience}/>
+      <Projects projects={projects}/>
+      <Skills skills={skills}/>
       <Contact />
     </main>
   );

@@ -13,18 +13,20 @@ export async function getProjects(): Promise<Project[]> {
       "slug": slug.current,
       "image": image.asset->url,
       github, 
+      skills,
       live,
-      url,
       content
     }`
   )
 }
 
 
-export async function profilePhoto(): Promise<ProfileType> {
+export async function profile(): Promise<ProfileType> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "profile"][0]{
       "image": image.asset->url,
+      resumeurl,
+      "resumefile": file.asset->url
     }`
   )
 }
@@ -43,7 +45,7 @@ export async function getSkills(): Promise<SkillType[]> {
     groq`*[_type == "skills"]{
       title,
       desc,
-      image,
+      "image": image.asset->url,
     }`
   )
 }
@@ -52,9 +54,10 @@ export async function getExperience(): Promise<ExperienceType[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "experience"]{
       title,
+      location,
       role,
       desc,
-      image
+      "image": image.asset->url,
     }`
   )
 }

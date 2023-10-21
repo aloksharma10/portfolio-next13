@@ -7,19 +7,23 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
+import { ExperienceType } from "@/types/Experience";
+import { PortableText } from "@portabletext/react";
 
-export default function Experience() {
+export default function Experience({
+  experiences,
+}: {
+  experiences: ExperienceType[];
+}) {
   const { ref } = useSectionInView("Experience");
   const { theme } = useTheme();
-
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
       <SectionHeading>My experience</SectionHeading>
       <VerticalTimeline lineColor="">
-        {experiencesData.map((item, index) => (
+        {experiences.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
               contentStyle={{
@@ -29,7 +33,7 @@ export default function Experience() {
                 border: "1px solid rgba(0, 0, 0, 0.05)",
                 textAlign: "left",
                 padding: "1.3rem 2rem",
-                visibility: "visible"
+                visibility: "visible",
               }}
               contentArrowStyle={{
                 borderRight:
@@ -37,21 +41,17 @@ export default function Experience() {
                     ? "0.4rem solid #9ca3af"
                     : "0.4rem solid rgba(255, 255, 255, 0.5)",
               }}
-              date={item.date}
-              icon={item.icon}
               iconStyle={{
-                background:
-                  theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
-                fontSize: "1.5rem",
-                visibility: "visible"
-
+                visibility: "visible",
+                backgroundImage: `url(${item.image})`,
+                backgroundSize: "40px 32px",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
               }}
             >
               <h3 className="font-semibold capitalize">{item.title}</h3>
               <p className="font-normal !mt-0">{item.location}</p>
-              <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
-                {item.description}
-              </p>
+              <PortableText value={item.desc} />
             </VerticalTimelineElement>
           </React.Fragment>
         ))}

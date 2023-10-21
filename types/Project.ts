@@ -1,13 +1,13 @@
-import { PortableTextBlock } from "sanity";
+import { PortableTextBlock, ArbitraryTypedObject, PortableTextSpan, PortableTextMarkDefinition } from "@portabletext/types";
+
 
 export type Project = {
   _id: string,
-  _createdAt: Date,
   name: string,
+  skills: string[],
   slug: string,
   image: string,
   github: string,
   live: string,
-  url: string,
-  content: PortableTextBlock[];
+  content: PortableTextBlock<PortableTextMarkDefinition, ArbitraryTypedObject | PortableTextSpan, string, string>;
 }

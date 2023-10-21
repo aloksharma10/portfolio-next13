@@ -1,6 +1,6 @@
-import { about, experience, profileImage, project, skills } from "./sanity-schemas";
+import { about, experience, profile, project, skills } from "./sanity-schemas";
 
 
-const schemas = [project, profileImage, about, experience, skills];
+const schemas = [project, profile, about, experience, skills];
 
 export default schemas;
