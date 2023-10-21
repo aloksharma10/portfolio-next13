@@ -19,6 +19,9 @@ import { ProfileType } from "@/types/Profile";
 import { Project } from "@/types/Project";
 import { SkillType } from "@/types/Skills";
 
+export const dynamic = 'force-dynamic' as const;
+export const revalidate = 60;
+
 export default async function Home() {
   const [projects, skills, experience, about, profileData]: [
     Project[],
